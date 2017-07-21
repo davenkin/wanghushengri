@@ -1,0 +1,57 @@
+import groovy.sql.Sql
+import org.yaml.snakeyaml.Yaml
+
+buildscript {
+    repositories {
+        jcenter()
+
+    }
+    dependencies {
+        classpath("org.yaml:snakeyaml:1.17")
+    }
+}
+
+
+configurations {
+    mysql
+}
+
+dependencies {
+    mysql("mysql:mysql-connector-java")
+}
+
+
+task cleanDB << {
+    println 'Clean Database......'
+    def profile = (System.properties['spring.profiles.active'] != null) ? System.properties['spring.profiles.active'] : "local"
+
+    URLClassLoader loader = GroovyObject.class.classLoader
+    configurations.mysql.each { File file ->
+        loader.addURL(file.toURL())
+    }
+
+    def ymlPath = "src/main/resources/application-${profile}.yml"
+    Yaml parser = new Yaml()
+    Map properties = parser.load((ymlPath as File).text)
+
+    def datasource = properties.get("spring").get("datasource")
+
+    def url = datasource.get("url")
+    def username = datasource.get("username")
+    def password = datasource.get("password")
+    def driver = datasource.get("driverClassName")
+
+
+    def lastSlash = url.lastIndexOf("/")
+    def baseUrl = url.substring(0, lastSlash)
+
+    def sql = Sql.newInstance(baseUrl, username, password, driver)
+
+    sql.execute("DROP DATABASE IF EXISTS WANGHUSHENGRI;".toString())
+    sql.execute("CREATE DATABASE WANGHUSHENGRI CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';".toString())
+    sql.close()
+}
+
+
+
+

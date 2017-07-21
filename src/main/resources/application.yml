@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+buildNumber: ${buildNumber}
+buildTime: ${buildTime}
+
+spring:
+  mvc:
+    favicon:
+      enabled: false
+

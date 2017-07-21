@@ -1,0 +1,115 @@
+import org.apache.tools.ant.filters.*
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE")
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: "jacoco"
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+applicationDefaultJvmArgs = [ "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005" ]
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+bootRun {
+    systemProperties System.properties
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
+}
+
+sourceSets {
+    apiTest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+
+configurations {
+    apiTestCompile.extendsFrom testCompile
+    apiTestRuntime.extendsFrom testRuntime
+}
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+//    compile("org.springframework.boot:spring-boot-starter-security")
+//    compile("org.springframework.boot:spring-boot-starter-mail")
+    compile("io.springfox:springfox-swagger2:2.6.1")
+    compile("io.springfox:springfox-swagger-ui:2.6.1")
+    compile('io.jsonwebtoken:jjwt:0.7.0')
+    compile("mysql:mysql-connector-java")
+//    compile("org.flywaydb:flyway-core")
+    compile('com.google.guava:guava')
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("com.h2database:h2")
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
+    runtime files('web')
+
+}
+
+
+processResources {
+    filesMatching('application.yml') {
+        expand([
+                buildNumber: System.getenv('BUILD_NUMBER') ?: "Local",
+                "buildTime": (new Date()).toString()
+        ])
+    }
+}
+
+
+task apiTest(type: Test) {
+    testClassesDir = sourceSets.apiTest.output.classesDir
+    classpath = sourceSets.apiTest.runtimeClasspath
+}
+
+
+idea {
+    module {
+        testSourceDirs += file('src/apiTest/java')
+        testSourceDirs += file('src/apiTest/resources')
+        scopes.TEST.plus += [configurations.apiTestCompile]
+        scopes.TEST.plus += [configurations.apiTestRuntime]
+    }
+}
+
+apiTest.mustRunAfter test
+build.dependsOn apiTest
+
+//API Test Code coverage
+task jacocoApiTestReport(type: JacocoReport){
+    sourceSets sourceSets.main
+    executionData apiTest
+}
+
+//Unit Test and API Test Code coverage all together
+task jacocoAllTestReport(type: JacocoReport){
+    sourceSets sourceSets.main
+    executionData test, apiTest
+}
+
+apply from: "cleanDB.gradle"
+
+
+
