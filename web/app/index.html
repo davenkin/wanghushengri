@@ -3,26 +3,46 @@
 
 <head>
     <title>忘乎生日</title>
-    <meta name="description" content="短信生日提醒"/>
+    <meta name="description" content="免费的短信生日提醒"/>
     <meta name="keywords" content="生日, 生日提醒, 生日备忘"/>
     <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
-<header id="header">
-    <img id="header-logo" src="logo.png" alt="忘乎生日"/>
-    <div id="header-nav-wrapper">
-        <nav id="header-nav"><a id="header-nav-login">登录</a><a id="header-nav-register">注册</a></nav>
-    </div>
+
+<header class="header">
+    <img class="header__logo" src="images/logo.png" alt="忘乎生日"/>
 </header>
+
+
+<nav class="navbar">
+    <ul class="navbar__list">
+        <li class="navbar__item">
+            <a class="navbar__link navbar__link-active" href="index.html">
+                <img class="navbar__icon" src="images/list.svg">
+            </a>
+        </li>
+        <li class="navbar__item">
+            <a class="navbar__link" href="index.html">
+                <img class="navbar__icon" src="images/add.svg">
+            </a>
+        </li>
+        <li class="navbar__item">
+            <a class="navbar__link" href="index.html">
+                <img class="navbar__icon" src="images/settings.svg">
+            </a>
+        </li>
+    </ul>
+</nav>
+
 </body>
 
 </html>

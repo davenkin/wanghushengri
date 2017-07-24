@@ -1,0 +1,33 @@
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fafafa;
+}
+
+.navbar__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3vh;
+}
+
+
+.navbar__link-active {
+    background-color: whitesmoke;
+}
+
+.navbar__link {
+    display: inline-block;
+    padding: 1vh 2vh;
+}
+
+.navbar__link:hover {
+    background-color: whitesmoke;
+
+}
+
+.navbar__icon {
+    max-height: 5vh;
+    width: auto;
+}

@@ -1,0 +1,24 @@
+@import url("navbar.css");
+* {
+    /*border: 1px solid #FF4081;*/
+
+}
+
+body {
+    font-size: 100%;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+
+.header {
+    background-color: #fafafa;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
+}
+
+.header__logo {
+    display: block;
+    max-height: 5vh;
+    width: auto;
+    padding: 1vh 2vh;
+    margin: 0 auto;
+}
+
