@@ -1,9 +1,10 @@
 * {
-    /*border: 1px solid red;*/
+    /*border: 1px solid #FF4081;*/
 
 }
 
 body {
+    background-color:#FF4081;
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 

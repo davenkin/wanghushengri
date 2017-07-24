@@ -19,7 +19,7 @@ public class PublicContentConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/app").setViewName("forward:/app/index.html");
-        registry.addViewController("/app/").setViewName("forward:/app/index.html");
+        registry.addViewController("/app").setViewName("redirect:/app/index.html");
+        registry.addViewController("/app/").setViewName("redirect:/app/index.html");
     }
 }
