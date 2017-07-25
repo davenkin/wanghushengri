@@ -1,11 +1,20 @@
-.login__input {
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+.login__logo {
+    display: block;
+    max-height: 10vh;
+    width: auto;
+    padding: 1vh 2vh;
 }
 
 .login__phone {
     margin-top: 10vh;
+    background-image: url('../images/phone.svg');
 }
+
+.login__password {
+    margin-top: 4vh;
+    background-image: url('../images/password.svg');
+}
+
 
 .login__button {
     margin-top: 4vh;
@@ -13,7 +22,6 @@
 
 .login__footer {
     margin-top: 5vh;
-    font-size: .8em;
 }
 
 .login__forgot-password {
@@ -22,28 +30,4 @@
 
 .login__register {
     float: left;
-}
-
-.register__button {
-    margin-top: 4vh;
-}
-
-.register__input {
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-}
-
-.register__phone {
-    margin-top: 8vh;
-}
-
-.register__indentify {
-    width: 40%;
-}
-
-.register__indentify-button{
-    float: right;
-    width: 50%;
-    margin-top: 2vh;
-    padding-top: 3vh;
 }

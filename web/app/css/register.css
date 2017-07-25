@@ -1,0 +1,35 @@
+.register__logo {
+    display: block;
+    max-height: 10vh;
+    width: auto;
+    padding: 1vh 2vh;
+
+}
+
+.register__button {
+    margin-top: 4vh;
+}
+
+.register__phone {
+    margin-top: 6vh;
+    background-image: url('../images/phone.svg');
+
+}
+
+.register__identify {
+    width: 50%;
+    background-image: url('../images/identifying-code.svg');
+
+}
+
+.register__identify-button {
+    float: right;
+    width: 40%;
+}
+
+.register__password {
+    margin-top: 4vh;
+    background-image: url('../images/password.svg');
+
+}
+

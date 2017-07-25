@@ -15,7 +15,7 @@
 
 
 .navbar__link-active {
-    background-color: whitesmoke;
+    background-color: lightgray;
 }
 
 .navbar__link {
@@ -24,7 +24,7 @@
 }
 
 .navbar__link:hover {
-    background-color: whitesmoke;
+    background-color:lightgrey;
 
 }
 
