@@ -1,11 +1,15 @@
 .header {
     background-color: #fafafa;
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .45);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .header__logo {
     display: block;
-    max-height: 8vh;
+    height: 8vh;
     width: auto;
     padding: 1vh 2vh;
 }

@@ -1,5 +1,6 @@
 .navbar {
     position: fixed;
+    height: 8vh;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -13,7 +14,6 @@
     padding: 0 3vh;
 }
 
-
 .navbar__link-active {
     background-color: lightgray;
 }
@@ -24,8 +24,7 @@
 }
 
 .navbar__link:hover {
-    background-color:lightgrey;
-
+    background-color: lightgrey;
 }
 
 .navbar__icon {
