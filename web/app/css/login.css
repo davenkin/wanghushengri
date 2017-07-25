@@ -1,71 +1,49 @@
-
-.login {
-    margin: 10vh auto;
-    max-width: 400px;
-    padding: 1vh 5vh;
-}
-
-.login__logo {
-    display: block;
-    max-height: 5vh;
-    width: auto;
-    padding: 1vh 2vh;
-    margin: 0 auto;
-}
-
-.login__title {
-    text-align: center;
-}
-
 .login__input {
-    width: 100%;
     margin-top: 2vh;
     margin-bottom: 2vh;
-    box-sizing: border-box;
-    border: none;
-    padding-left: 5vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    font-size: 1.1em;
-    background-size: 3vh 3vh;
-    background-color: white;
-    background-position: 1vh center;
-    background-repeat: no-repeat;
-
-}
-
-.login__input:focus {
-    border: 1px solid #FF4081;
 }
 
 .login__phone {
     margin-top: 10vh;
-    background-image: url('../images/phone.svg');
-}
-
-.login__password {
-    background-image: url('../images/password.svg');
 }
 
 .login__button {
-    display: block;
-    background-color: #FF4081;
-    color: white;
-    padding: 2vh 3vh;
     margin-top: 4vh;
-    cursor: pointer;
-    width: 100%;
-    text-decoration: none;
-    font-size: 1.1em;
-    box-sizing: border-box;
 }
 
-.login__button:hover {
-    background-color: #B82E56;
+.login__footer {
+    margin-top: 5vh;
+    font-size: .8em;
 }
 
 .login__forgot-password {
-    margin-top: 3vh;
     float: right;
-    font-size: .8em;
+}
+
+.login__register {
+    float: left;
+}
+
+.register__button {
+    margin-top: 4vh;
+}
+
+.register__input {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.register__phone {
+    margin-top: 8vh;
+}
+
+.register__indentify {
+    width: 40%;
+}
+
+.register__indentify-button{
+    float: right;
+    width: 50%;
+    margin-top: 2vh;
+    padding-top: 3vh;
 }

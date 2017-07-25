@@ -1,0 +1,88 @@
+* {
+    /*border: 1px solid #FF4081;*/
+
+}
+
+body {
+    font-size: 100%;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    background-color: whitesmoke;
+}
+
+.theme-colored {
+    color: #FF4081;
+}
+
+.text-aligned {
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    max-height: 5vh;
+    width: auto;
+    padding: 1vh 2vh;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.iconed-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    padding-left: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    font-size: 1.1em;
+    background-size: 3vh 3vh;
+    background-color: white;
+    background-position: 1vh center;
+    background-repeat: no-repeat;
+}
+
+
+.input:focus {
+    border: 1px solid #FF4081;
+}
+
+.max400px {
+    margin: 10vh auto;
+    max-width: 400px;
+    padding: 1vh 5vh;
+}
+
+.button {
+    display: block;
+    background-color: #FF4081;
+    color: white;
+    padding: 2vh 3vh;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+    font-size: 1.1em;
+    box-sizing: border-box;
+}
+
+
+.button:hover {
+    background-color: #B82E56;
+}
+
+.iconed-password {
+    background-image: url('../images/password.svg');
+}
+
+.iconed-phone {
+    background-image: url('../images/phone.svg');
+}
+
+.iconed-identity {
+    background-image: url('../images/identifying-code.svg');
+
+}
+
+
+
+
