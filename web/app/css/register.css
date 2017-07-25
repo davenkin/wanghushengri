@@ -17,14 +17,14 @@
 }
 
 .register__identify {
-    width: 50%;
+    width: 45%;
     background-image: url('../images/identifying-code.svg');
 
 }
 
 .register__identify-button {
     float: right;
-    width: 40%;
+    width: 50%;
 }
 
 .register__password {
