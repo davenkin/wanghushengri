@@ -43,7 +43,7 @@ body {
     width: 100%;
     max-width: 600px;
     border: none;
-    height: 10vh;
+    height: 8vh;
     padding-top: 2vh;
     padding-bottom: 2vh;
     font-size: 1.1em;
@@ -68,8 +68,8 @@ body {
     cursor: pointer;
     width: 100%;
     max-width: 600px;
-    height: 10vh;
-    line-height: 10vh;
+    height: 8vh;
+    line-height: 8vh;
     text-decoration: none;
     font-size: 1.1em;
     text-align: center;
