@@ -48,16 +48,16 @@
 }
 
 .login__button {
+    display: block;
     background-color: #FF4081;
-    border: none;
     color: white;
     padding: 2vh 3vh;
-    text-decoration: none;
     margin-top: 4vh;
     cursor: pointer;
-    display: block;
     width: 100%;
+    text-decoration: none;
     font-size: 1.1em;
+    box-sizing: border-box;
 }
 
 .login__button:hover {
