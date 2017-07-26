@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>忘乎生日</title>
+    <meta name="description" content="免费的短信生日提醒"/>
+    <meta name="keywords" content="生日, 生日提醒, 生日备忘"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+<header class="header">
+    <img class="header__logo centered" src="images/logo.png" alt="忘乎生日"/>
+</header>
+
+<section class="add-birthday">
+    <div><label for="name">你如何称呼TA:</label>
+        <input id="name" class="input  margin-top-6vh" type="text" placeholder="例如:大舅">
+    </div>
+
+    <div><label style="display: block" for="datetype">TA的生日:</label>
+        <select id="datetype">
+            <option value="volvo">阴历</option>
+            <option value="saab">阳历</option>
+        </select>
+        <input style="width: 15vh" type="number" min="1" max="12"><span>月</span>
+        <input style="width: 15vh" type="number" min="1" max="31"><span>日</span>
+    </div>
+
+    <div><label for="year">TA生于哪一年(可选):</label>
+        <input id="year" class="input  margin-top-6vh" type="text" placeholder="1986">
+    </div>
+
+
+    <div><label for="days">提前多久通知你:</label>
+        <select id="days">
+            <option value="volvo">一天</option>
+            <option value="saab">两天</option>
+            <option value="saab">三天</option>
+            <option value="saab">一周</option>
+        </select></div>
+
+
+</section>
+
+<nav class="navbar">
+    <ul class="navbar__list">
+        <li>
+            <a class="navbar__link navbar__link-active" href="index.html">
+                <img class="navbar__icon" src="images/list.svg">
+            </a>
+        </li>
+        <li>
+            <a class="navbar__link" href="index.html">
+                <img class="navbar__icon" src="images/add.svg">
+            </a>
+        </li>
+        <li>
+            <a class="navbar__link" href="login.html">
+                <img class="navbar__icon" src="images/settings.svg">
+            </a>
+        </li>
+    </ul>
+</nav>
+
+</body>
+
+</html>
