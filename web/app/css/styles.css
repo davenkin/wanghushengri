@@ -44,29 +44,32 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    width:25%;
+    width:30%;
     height: 8vh;
     border-radius: 0;
     background-color: white;
     border: none;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 
 .add-birthday__month {
-    width:25%;
+    width:20%;
     height: 8vh;
     text-align: center;
-    /*font-size: 1.1em;*/
-
 }
 
 .add-birthday__date {
-    width: 25%;
+    width: 20%;
     height: 8vh;
     /*font-size: 1.1em;*/
     text-align: center;
 
+}
+
+.add-birthday-black {
+    color: black;
+    /*font-size: 1.1em;*/
 }
 
 .add-birthday__predays {
