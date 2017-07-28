@@ -20,7 +20,7 @@
 
 .navbar__link {
     display: inline-block;
-    padding: 1vh 2vh;
+    padding: 1vh 3vh;
 }
 
 .navbar__link:hover {
@@ -28,6 +28,6 @@
 }
 
 .navbar__icon {
-    max-height: 5vh;
+    max-height: 6vh;
     width: auto;
 }
