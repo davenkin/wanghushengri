@@ -74,5 +74,11 @@ public class Application extends SpringBootServletInitializer {
         return mapper;
     }
 
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
+
 
 }
