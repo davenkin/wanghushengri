@@ -25,8 +25,8 @@ public class VerificationCodeService {
         this.verificationCodeRepository = verificationCodeRepository;
     }
 
-    public void startVerification(PhoneNumber phoneNumber, VerificationType verificationType) {
-        VerificationCode verificationCode = verificationCodeGenerator.generate(phoneNumber,verificationType);
+    public void sendVerificationCode(PhoneNumber phoneNumber, VerificationType verificationType) {
+        VerificationCode verificationCode = verificationCodeGenerator.generate(phoneNumber, verificationType);
         smsSender.sendVerificationCode(phoneNumber, verificationCode.getCode());
         verificationCodeRepository.save(verificationCode);
     }

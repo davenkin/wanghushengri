@@ -1,10 +1,10 @@
 package davenkin.wanghushengri.registration;
 
 import davenkin.wanghushengri.exception.CommonBadRequestException;
-import davenkin.wanghushengri.security.PrincipalUser;
+import davenkin.wanghushengri.security.CredentialUser;
+import davenkin.wanghushengri.security.CredentialUserRepository;
 import davenkin.wanghushengri.sms.PhoneNumber;
 import davenkin.wanghushengri.sms.VerificationType;
-import davenkin.wanghushengri.user.User;
 import davenkin.wanghushengri.user.UserFactory;
 import davenkin.wanghushengri.verification.VerificationCode;
 import davenkin.wanghushengri.verification.VerificationCodeRepository;
@@ -23,7 +23,7 @@ public class RegistrationService {
 
     private VerificationCodeRepository verificationCodeRepository;
 
-    private UserRepository userRepository;
+    private CredentialUserRepository credentialUserRepository;
 
     private PasswordEncoder passwordEncoder;
 
@@ -31,11 +31,11 @@ public class RegistrationService {
 
     @Autowired
     public RegistrationService(VerificationCodeRepository verificationCodeRepository,
-                               UserRepository userRepository,
+                               CredentialUserRepository credentialUserRepository,
                                PasswordEncoder passwordEncoder,
                                UserFactory userFactory) {
         this.verificationCodeRepository = verificationCodeRepository;
-        this.userRepository = userRepository;
+        this.credentialUserRepository = credentialUserRepository;
         this.passwordEncoder = passwordEncoder;
         this.userFactory = userFactory;
     }
@@ -50,8 +50,8 @@ public class RegistrationService {
             throw new CommonBadRequestException("Invalid verification code.");
         }
 
-        PrincipalUser principalUser = new PrincipalUser(userFactory.createUser(phoneNumber), passwordEncoder.encode(password));
-        userRepository.save(principalUser);
+        CredentialUser principalUser = new CredentialUser(userFactory.createUser(phoneNumber), passwordEncoder.encode(password));
+        credentialUserRepository.save(principalUser);
 
     }
 }

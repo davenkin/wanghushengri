@@ -22,7 +22,7 @@ public class VerificationCodeApplicationService {
     }
 
     public void sendVerificationCode(String phoneNumber, VerificationType verificationType) {
-        verificationCodeService.startVerification(of(phoneNumber), verificationType);
+        verificationCodeService.sendVerificationCode(of(phoneNumber), verificationType);
     }
 
 }

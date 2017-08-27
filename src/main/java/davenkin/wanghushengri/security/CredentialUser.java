@@ -5,11 +5,11 @@ import davenkin.wanghushengri.user.User;
 /**
  * Created by yteng on 8/25/17.
  */
-public class PrincipalUser {
+public class CredentialUser {
     private User user;
     private String password;
 
-    public PrincipalUser(User user, String password) {
+    public CredentialUser(User user, String password) {
         this.user = user;
         this.password = password;
     }

@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
  * Created by yteng on 8/27/17.
  */
 public final class VerificationCode {
-    private static final int MAX_VALID_PERIOD = 30;
+    private static final int MAX_VALID_MINS = 30;
     private final String code;
     private final LocalDateTime createdTime;
     private final PhoneNumber phoneNumber;
@@ -25,7 +25,7 @@ public final class VerificationCode {
 
     public boolean isValid() {
         long minutes = ChronoUnit.MINUTES.between(createdTime, LocalDateTime.now());
-        return minutes < MAX_VALID_PERIOD;
+        return minutes < MAX_VALID_MINS;
     }
 
     public static VerificationCode of(String code, PhoneNumber phoneNumber, VerificationType verificationType) {

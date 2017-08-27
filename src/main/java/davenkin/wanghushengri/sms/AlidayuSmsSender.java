@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 /**
  * Created by yteng on 7/28/17.
  */
@@ -58,12 +55,5 @@ public class AlidayuSmsSender implements SmsSender {
             throw new RuntimeException(e);
         }
     }
-
-    public void daysBetween(Date date1, Date date2) {
-        long diff = date2.getTime() - date1.getTime();
-        System.out.println("Days: " + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
-
-    }
-
 
 }

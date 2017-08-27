@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
 @RestController
 public class VerificationCodeController {
     private VerificationCodeApplicationService verificationCodeApplicationService;
@@ -17,7 +15,7 @@ public class VerificationCodeController {
     }
 
     @PostMapping(value = "/verifications")
-    public void sendVerificationCode(@Valid @RequestBody VerificationCommand command) {
+    public void sendVerificationCode(@RequestBody VerificationCommand command) {
         verificationCodeApplicationService.sendVerificationCode(command.getPhoneNumber(), command.getVerificationType());
     }
 

@@ -16,11 +16,11 @@ public class StubSmsSender implements SmsSender {
 
     @Override
     public void sendVerificationCode(PhoneNumber phoneNumber, String code) {
-        logger.info("Sent verification code:{}", code);
+        logger.info("\n\nSent verification code:{}\n\n", code);
     }
 
     @Override
     public void sendBirthdayNotification(PhoneNumber phoneNumber, String who, String time) {
-        logger.info("Sent birthday sms:{}-{}", who, time);
+        logger.info("\n\nSent birthday sms:{}-{}\n\n", who, time);
     }
 }

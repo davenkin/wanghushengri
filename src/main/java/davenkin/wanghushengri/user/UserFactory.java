@@ -14,6 +14,6 @@ public class UserFactory {
 
     public User createUser(PhoneNumber phoneNumber) {
         UserID userID = UserID.of(UUID.randomUUID().toString());
-        return new User(userID, phoneNumber);
+        return new User(userID, phoneNumber, Role.COMMON_USER);
     }
 }

@@ -1,6 +1,5 @@
 package davenkin.wanghushengri.security;
 
-import davenkin.wanghushengri.registration.UserRepository;
 import davenkin.wanghushengri.sms.PhoneNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -21,13 +20,13 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     private final PasswordEncoder encoder;
 
-    private final UserRepository userRepository;
+    private final CredentialUserRepository credentialUserRepository;
 
     @Autowired
     public LoginAuthenticationProvider(PasswordEncoder encoder,
-                                       UserRepository userRepository) {
+                                       CredentialUserRepository credentialUserRepository) {
         this.encoder = encoder;
-        this.userRepository = userRepository;
+        this.credentialUserRepository = credentialUserRepository;
     }
 
     @Override
@@ -35,14 +34,14 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
         String phoneNumber = (String) authentication.getPrincipal();
         String password = (String) authentication.getCredentials();
 
-        PrincipalUser user = userRepository.principalUserByPhoneNumber(PhoneNumber.of(phoneNumber)).orElseThrow(() -> new UsernameNotFoundException("User not found for: " + phoneNumber));
+        CredentialUser credentialUser = credentialUserRepository.principalUserByPhoneNumber(PhoneNumber.of(phoneNumber)).orElseThrow(() -> new UsernameNotFoundException("User not found for: " + phoneNumber));
 
 
-        if (!encoder.matches(password, user.getPassword())) {
+        if (!encoder.matches(password, credentialUser.getPassword())) {
             throw new BadCredentialsException("Authentication Failed. Phone number or Password not valid.");
         }
 
-        return new UsernamePasswordAuthenticationToken(user.getUser(), null, null);
+        return new UsernamePasswordAuthenticationToken(credentialUser.getUser(), null, null);
     }
 
     @Override

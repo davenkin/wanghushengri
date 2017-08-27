@@ -20,6 +20,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import static org.springframework.http.HttpMethod.OPTIONS;
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -96,9 +97,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**")
                 .antMatchers(OPTIONS, "/**")
                 .antMatchers("/")
+                .antMatchers("/app/**")
                 .antMatchers("/registrations")
-                .antMatchers("/verifications")
-                .antMatchers("/app/**");
+                .antMatchers("/verifications");
     }
 
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -121,7 +122,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(null)
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(STATELESS);
     }
 
 }
