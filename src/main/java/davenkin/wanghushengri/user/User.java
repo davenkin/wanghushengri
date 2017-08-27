@@ -8,4 +8,17 @@ import davenkin.wanghushengri.sms.PhoneNumber;
 public class User {
     private UserID id;
     private PhoneNumber phoneNumber;
+
+    public User(UserID id, PhoneNumber phoneNumber) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public UserID getId() {
+        return id;
+    }
+
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
 }

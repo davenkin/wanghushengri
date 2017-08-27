@@ -26,7 +26,12 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ResponseEntity<?> handleException(Exception ex) {
         HttpStatus httpStatus = resolveAnnotatedResponseStatus(ex);
-        return new ResponseEntity<>(new ErrorResponse(httpStatus.value(), ex.getMessage()), new HttpHeaders(), httpStatus);
+        String message = ex.getMessage();
+        if (message == null) {
+            message = "Internal error";
+        }
+
+        return new ResponseEntity<>(new ErrorResponse(httpStatus.value(), message), new HttpHeaders(), httpStatus);
     }
 
 //    @ExceptionHandler({AccessDeniedException.class})

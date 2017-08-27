@@ -6,12 +6,14 @@ import org.springframework.stereotype.Component;
 /**
  * Created by yteng on 8/24/17.
  */
+
 @Component
 @ConfigurationProperties("sms")
 public class SmsProperties {
     private String serverUrl;
     private String appKey;
     private String appSecret;
+    private int maxVerifications;
 
     public String getServerUrl() {
         return serverUrl;
@@ -35,5 +37,13 @@ public class SmsProperties {
 
     public void setAppSecret(String appSecret) {
         this.appSecret = appSecret;
+    }
+
+    public int getMaxVerifications() {
+        return maxVerifications;
+    }
+
+    public void setMaxVerifications(int maxVerifications) {
+        this.maxVerifications = maxVerifications;
     }
 }
