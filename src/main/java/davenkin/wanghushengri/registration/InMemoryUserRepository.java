@@ -1,6 +1,5 @@
 package davenkin.wanghushengri.registration;
 
-import davenkin.wanghushengri.exception.CommonResourceNotFoundException;
 import davenkin.wanghushengri.security.PrincipalUser;
 import davenkin.wanghushengri.sms.PhoneNumber;
 import davenkin.wanghushengri.user.User;
@@ -20,42 +19,47 @@ import java.util.function.Predicate;
 public class InMemoryUserRepository implements UserRepository {
     private Map<PhoneNumber, PrincipalUser> users = new HashMap<>();
 
+    public InMemoryUserRepository() {
+        this.users.put(PhoneNumber.of("15102822755"), new PrincipalUser(new User(UserID.of("100000"), PhoneNumber.of("15102822755")), "$2a$10$ihOHsjioUeDHPC/4hAruZuXotwUYl3Q7q9UTkrypWvcEQYc5z1x6i"));
+    }
+
     @Override
     public void save(PrincipalUser principalUser) {
         users.put(principalUser.getUser().getPhoneNumber(), principalUser);
     }
 
     @Override
-    public User byPhoneNumber(PhoneNumber phoneNumber) {
-        return principalUserByPhoneNumber(phoneNumber).getUser();
+    public Optional<User> byPhoneNumber(PhoneNumber phoneNumber) {
+        Optional<PrincipalUser> principalUser = principalUserByPhoneNumber(phoneNumber);
+        return getUser(principalUser);
     }
 
-    @Override
-    public User byId(UserID userID) {
-        return principalUserByUserID(userID).getUser();
-    }
-
-    @Override
-    public PrincipalUser principalUserByPhoneNumber(PhoneNumber phoneNumber) {
-        try {
-            return users.get(phoneNumber);
-        } catch (NullPointerException e) {
-            throw new CommonResourceNotFoundException("User not found with phone number-" + phoneNumber.getPhoneNumber());
+    private Optional<User> getUser(Optional<PrincipalUser> principalUser) {
+        if (principalUser.isPresent()) {
+            return Optional.of(principalUser.get().getUser());
         }
+        return Optional.empty();
     }
 
     @Override
-    public PrincipalUser principalUserByUserID(UserID userID) {
-        Optional<PrincipalUser> user = users.values().stream().filter(new Predicate<PrincipalUser>() {
+    public Optional<User> byId(UserID userID) {
+        return getUser(principalUserByUserID(userID));
+    }
+
+    @Override
+    public Optional<PrincipalUser> principalUserByPhoneNumber(PhoneNumber phoneNumber) {
+        PrincipalUser principalUser = users.get(phoneNumber);
+        return Optional.ofNullable(principalUser);
+    }
+
+    @Override
+    public Optional<PrincipalUser> principalUserByUserID(UserID userID) {
+        return users.values().stream().filter(new Predicate<PrincipalUser>() {
             @Override
             public boolean test(PrincipalUser principalUser) {
                 return principalUser.getUser().getId().equals(userID);
             }
         }).findFirst();
-        if (user.isPresent()) {
-            return user.get();
-        }
-        throw new CommonResourceNotFoundException("User not found with id-" + userID.getId());
 
     }
 

@@ -30,13 +30,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Autowired
-    LoginFilter loginFilter;
+    private LoginFilter loginFilter;
+
+    @Autowired
+    private LoginAuthenticationProvider loginAuthenticationProvider;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public FilterRegistrationBean jwtAuthenticationFilterBean() {
@@ -99,18 +101,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/app/**");
     }
 
-//
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER");
-//    }
-
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user1").password("password1").roles("USER");
+        auth.authenticationProvider(loginAuthenticationProvider);
     }
 
 
@@ -123,6 +115,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .addFilterBefore(corsFilter(), ChannelProcessingFilter.class)
+                .addFilterBefore(loginFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(null)

@@ -5,6 +5,8 @@ import davenkin.wanghushengri.sms.PhoneNumber;
 import davenkin.wanghushengri.user.User;
 import davenkin.wanghushengri.user.UserID;
 
+import java.util.Optional;
+
 /**
  * Created by yteng on 8/27/17.
  */
@@ -12,13 +14,13 @@ import davenkin.wanghushengri.user.UserID;
 public interface UserRepository {
     public void save(PrincipalUser principalUser);
 
-    public User byPhoneNumber(PhoneNumber phoneNumber);
+    public Optional<User> byPhoneNumber(PhoneNumber phoneNumber);
 
-    public User byId(UserID userID);
+    public Optional<User> byId(UserID userID);
 
-    public PrincipalUser principalUserByPhoneNumber(PhoneNumber phoneNumber);
+    public Optional<PrincipalUser> principalUserByPhoneNumber(PhoneNumber phoneNumber);
 
-    public PrincipalUser principalUserByUserID(UserID userID);
+    public Optional<PrincipalUser> principalUserByUserID(UserID userID);
 
 
 }
