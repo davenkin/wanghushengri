@@ -2,6 +2,7 @@ package davenkin.wanghushengri.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
@@ -25,7 +26,11 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
         JwtToken jwtToken = (JwtToken) jwtAuthenticationToken.getCredentials();
-        return jwtService.from(jwtToken);
+        try {
+            return jwtService.from(jwtToken);
+        } catch (Exception e) {
+            throw new BadCredentialsException("Invalid token.");
+        }
     }
 
     @Override

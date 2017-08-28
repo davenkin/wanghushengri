@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,15 +35,15 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(new ErrorResponse(httpStatus.value(), message), new HttpHeaders(), httpStatus);
     }
 
-//    @ExceptionHandler({AccessDeniedException.class})
-//    public ResponseEntity<?> handleAccessDeniedException(Exception ex) {
-//        if (ex.getMessage().toLowerCase().contains("access is denied")) {
-//            ErrorResponse errorResponse = new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), ex.getMessage());
-//            return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
-//        }
-//
-//        return handleException(ex);
-//    }
+    @ExceptionHandler({AccessDeniedException.class})
+    public ResponseEntity<?> handleAccessDeniedException(Exception ex) {
+        if (ex.getMessage().toLowerCase().contains("access is denied")) {
+            ErrorResponse errorResponse = new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), ex.getMessage());
+            return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
+        }
+
+        return handleException(ex);
+    }
 
     private HttpStatus resolveAnnotatedResponseStatus(Exception exception) {
         logger.error(exception.getMessage(), exception);

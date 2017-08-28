@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+import static davenkin.wanghushengri.sms.VerificationType.REGISTRATION;
+
 /**
  * Created by yteng on 8/27/17.
  */
@@ -45,7 +47,7 @@ public class RegistrationService {
             throw new CommonBadRequestException("Password does not match.");
         }
 
-        Optional<VerificationCode> latestFor = verificationCodeRepository.latestFor(phoneNumber, VerificationType.REGISTRATION);
+        Optional<VerificationCode> latestFor = verificationCodeRepository.latestFor(phoneNumber, REGISTRATION);
         if (!latestFor.isPresent() || !latestFor.get().getCode().equals(verificationCode) || !latestFor.get().isValid()) {
             throw new CommonBadRequestException("Invalid verification code.");
         }
