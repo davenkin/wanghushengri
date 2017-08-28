@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public final class PhoneNumber {
     private final String phoneNumber;
-    private static final String pattern = "^[1][3,4,5,7,8][0-9]{9}$";
+    private static final String pattern = "^[1][34578][0-9]{9}$";
 
     private PhoneNumber(String phoneNumber) {
         if (!Pattern.matches(pattern, phoneNumber)) {

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoginAuthenticationProvider implements AuthenticationProvider {
 
+    public static final String AUTHENTICATION_FAILED_MESSAGE = "Authentication Failed. Invalid phone number or password.";
     private final PasswordEncoder encoder;
 
     private final CredentialUserRepository credentialUserRepository;
@@ -31,14 +32,14 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String phoneNumber = (String) authentication.getPrincipal();
+        PhoneNumber phoneNumber = (PhoneNumber) authentication.getPrincipal();
         String password = (String) authentication.getCredentials();
 
-        CredentialUser credentialUser = credentialUserRepository.principalUserByPhoneNumber(PhoneNumber.of(phoneNumber)).orElseThrow(() -> new UsernameNotFoundException("User not found for: " + phoneNumber));
+        CredentialUser credentialUser = credentialUserRepository.principalUserByPhoneNumber(phoneNumber).orElseThrow(() -> new UsernameNotFoundException(AUTHENTICATION_FAILED_MESSAGE));
 
 
         if (!encoder.matches(password, credentialUser.getPassword())) {
-            throw new BadCredentialsException("Authentication Failed. Phone number or Password not valid.");
+            throw new BadCredentialsException(AUTHENTICATION_FAILED_MESSAGE);
         }
 
         return new UsernamePasswordAuthenticationToken(credentialUser.getUser(), null, null);
