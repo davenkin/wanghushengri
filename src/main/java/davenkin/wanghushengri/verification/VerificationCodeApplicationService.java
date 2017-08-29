@@ -1,7 +1,5 @@
 package davenkin.wanghushengri.verification;
 
-import davenkin.wanghushengri.sms.VerificationCodeService;
-import davenkin.wanghushengri.sms.VerificationType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

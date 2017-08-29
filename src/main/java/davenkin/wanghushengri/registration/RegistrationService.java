@@ -4,7 +4,6 @@ import davenkin.wanghushengri.exception.CommonBadRequestException;
 import davenkin.wanghushengri.security.CredentialUser;
 import davenkin.wanghushengri.security.CredentialUserRepository;
 import davenkin.wanghushengri.sms.PhoneNumber;
-import davenkin.wanghushengri.sms.VerificationType;
 import davenkin.wanghushengri.user.UserFactory;
 import davenkin.wanghushengri.verification.VerificationCode;
 import davenkin.wanghushengri.verification.VerificationCodeRepository;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-import static davenkin.wanghushengri.sms.VerificationType.REGISTRATION;
+import static davenkin.wanghushengri.verification.VerificationType.REGISTRATION;
 
 /**
  * Created by yteng on 8/27/17.

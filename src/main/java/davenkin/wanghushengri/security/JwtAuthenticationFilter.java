@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static davenkin.wanghushengri.security.JwtToken.of;
+
 /**
  * Created by yteng on 8/26/17.
  */
@@ -41,7 +43,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
             throws AuthenticationException, IOException, ServletException {
         String tokenString = extractToken(request);
 
-        JwtAuthenticationToken jwtAuthenticationToken = new JwtAuthenticationToken(null, JwtToken.of(tokenString), null);
+        JwtAuthenticationToken jwtAuthenticationToken = new JwtAuthenticationToken(null, of(tokenString), null);
 
         return getAuthenticationManager().authenticate(jwtAuthenticationToken);
     }

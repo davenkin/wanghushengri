@@ -1,7 +1,6 @@
 package davenkin.wanghushengri.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import davenkin.wanghushengri.sms.PhoneNumber;
 import davenkin.wanghushengri.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -22,9 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static davenkin.wanghushengri.sms.PhoneNumber.of;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.util.StringUtils.isEmpty;
 
 /**
  * Created by yteng on 8/26/17.
@@ -69,11 +69,11 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
         String phoneNumber = loginCommand.getPhoneNumber();
         String password = loginCommand.getPassword();
 
-        if (StringUtils.isEmpty(phoneNumber) || StringUtils.isEmpty(password)) {
+        if (isEmpty(phoneNumber) || isEmpty(password)) {
             throw new AuthenticationServiceException("Username or password is not provided");
         }
 
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(PhoneNumber.of(phoneNumber), password);
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(of(phoneNumber), password);
 
         return this.getAuthenticationManager().authenticate(token);
     }
@@ -82,10 +82,12 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
 
-        JwtToken jwtToken = jwtService.generateJwtToken((User) authResult.getPrincipal());
+        User user = (User) authResult.getPrincipal();
+        JwtToken jwtToken = jwtService.generateJwtToken(user);
         response.setStatus(OK.value());
         response.setContentType(APPLICATION_JSON_VALUE);
         objectMapper.writeValue(response.getWriter(), jwtToken);
+        logger.info("{} logged in.", user);
     }
 
 

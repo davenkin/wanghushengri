@@ -1,8 +1,7 @@
-package davenkin.wanghushengri.sms;
+package davenkin.wanghushengri.verification;
 
-import davenkin.wanghushengri.verification.VerificationCode;
-import davenkin.wanghushengri.verification.VerificationCodeGenerator;
-import davenkin.wanghushengri.verification.VerificationCodeRepository;
+import davenkin.wanghushengri.sms.PhoneNumber;
+import davenkin.wanghushengri.sms.SmsSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

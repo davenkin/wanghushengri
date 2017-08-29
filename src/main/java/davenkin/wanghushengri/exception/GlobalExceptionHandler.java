@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import static davenkin.wanghushengri.exception.DeveloperMessageUtil.developerMessage;
+import static davenkin.wanghushengri.exception.ErrorResponse.of;
 import static org.springframework.core.annotation.AnnotatedElementUtils.findMergedAnnotation;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
@@ -34,12 +35,12 @@ public class GlobalExceptionHandler {
             message = "Internal error";
         }
 
-        return new ResponseEntity<>(ErrorResponse.of(httpStatus.value(), message, developerMessage(ex)), new HttpHeaders(), httpStatus);
+        return new ResponseEntity<>(of(httpStatus.value(), message, developerMessage(ex)), new HttpHeaders(), httpStatus);
     }
 
     @ExceptionHandler({AccessDeniedException.class})
     public ResponseEntity<?> handleAccessDeniedException(Exception ex) {
-        ErrorResponse errorResponse = ErrorResponse.of(FORBIDDEN.value(), ex.getMessage(), developerMessage(ex));
+        ErrorResponse errorResponse = of(FORBIDDEN.value(), ex.getMessage(), developerMessage(ex));
         return new ResponseEntity<>(errorResponse, new HttpHeaders(), FORBIDDEN);
     }
 

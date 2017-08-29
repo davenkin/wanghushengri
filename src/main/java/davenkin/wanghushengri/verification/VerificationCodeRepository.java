@@ -1,7 +1,6 @@
 package davenkin.wanghushengri.verification;
 
 import davenkin.wanghushengri.sms.PhoneNumber;
-import davenkin.wanghushengri.sms.VerificationType;
 
 import java.util.Optional;
 

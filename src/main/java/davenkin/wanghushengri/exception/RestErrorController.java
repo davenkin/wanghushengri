@@ -12,6 +12,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
+import static davenkin.wanghushengri.exception.ErrorResponse.of;
+
 /**
  * Created by yteng on 8/27/17.
  */
@@ -27,7 +29,7 @@ public class RestErrorController implements ErrorController {
     @RequestMapping(value = PATH)
     ErrorResponse handleError(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> errorAttributes = getErrorAttributes(request, true);
-        return ErrorResponse.of(response.getStatus(), (String) errorAttributes.get("error"), (String) errorAttributes.get("message"));
+        return of(response.getStatus(), (String) errorAttributes.get("error"), (String) errorAttributes.get("message"));
     }
 
     @Override

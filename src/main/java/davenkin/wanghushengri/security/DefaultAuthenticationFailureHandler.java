@@ -39,7 +39,7 @@ public class DefaultAuthenticationFailureHandler implements AuthenticationFailur
         SecurityContextHolder.clearContext();
         response.setStatus(UNAUTHORIZED.value());
         response.setContentType(APPLICATION_JSON_VALUE);
-        logger.warn("Login failed:", exception);
+        logger.warn("Authentication failed:", exception);
         objectMapper.writeValue(response.getWriter(), of(UNAUTHORIZED.value(), exception.getMessage(), developerMessage(exception)));
 
     }

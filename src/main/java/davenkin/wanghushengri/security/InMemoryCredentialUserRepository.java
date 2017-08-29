@@ -36,12 +36,7 @@ public class InMemoryCredentialUserRepository implements CredentialUserRepositor
 
     @Override
     public Optional<CredentialUser> principalUserByUserID(UserID userID) {
-        return users.values().stream().filter(new Predicate<CredentialUser>() {
-            @Override
-            public boolean test(CredentialUser credentialUser) {
-                return credentialUser.getUser().getId().equals(userID);
-            }
-        }).findFirst();
+        return users.values().stream().filter(credentialUser -> credentialUser.getUser().getId().equals(userID)).findFirst();
 
     }
 }

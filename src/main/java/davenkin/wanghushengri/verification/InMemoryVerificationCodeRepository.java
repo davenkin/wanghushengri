@@ -1,14 +1,12 @@
 package davenkin.wanghushengri.verification;
 
 import davenkin.wanghushengri.sms.PhoneNumber;
-import davenkin.wanghushengri.sms.VerificationType;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Created by yteng on 8/27/17.

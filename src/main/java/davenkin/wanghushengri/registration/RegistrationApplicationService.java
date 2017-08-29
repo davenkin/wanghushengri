@@ -4,6 +4,8 @@ import davenkin.wanghushengri.sms.PhoneNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static davenkin.wanghushengri.sms.PhoneNumber.of;
+
 /**
  * Created by yteng on 8/27/17.
  */
@@ -19,6 +21,6 @@ public class RegistrationApplicationService {
     }
 
     public void register(RegistrationCommand command) {
-        registrationService.registerUser(PhoneNumber.of(command.getPhoneNumber()), command.getPassword(), command.getPasswordAgain(), command.getVerificationCode());
+        registrationService.registerUser(of(command.getPhoneNumber()), command.getPassword(), command.getPasswordAgain(), command.getVerificationCode());
     }
 }

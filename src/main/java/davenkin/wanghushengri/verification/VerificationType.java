@@ -1,4 +1,4 @@
-package davenkin.wanghushengri.sms;
+package davenkin.wanghushengri.verification;
 
 /**
  * Created by yteng on 8/24/17.
