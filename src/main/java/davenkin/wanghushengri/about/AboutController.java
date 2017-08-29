@@ -5,14 +5,15 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
-import java.util.Date;
 
 @RestController
 public class AboutController {
 
     //now
-    private Date deployTime = new Date();
+    private ZonedDateTime deployTime = ZonedDateTime.now(ZoneId.of("Asia/Shanghai"));
 
     @Autowired
     private Environment environment;

@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 import static davenkin.wanghushengri.verification.VerificationType.REGISTRATION;
 
@@ -21,6 +22,8 @@ import static davenkin.wanghushengri.verification.VerificationType.REGISTRATION;
 
 @Component
 public class RegistrationService {
+
+    private static final String PASSWORD_PATTERN = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$";
 
     private VerificationCodeRepository verificationCodeRepository;
 
@@ -45,6 +48,11 @@ public class RegistrationService {
         if (!password.equals(passwordAgain)) {
             throw new CommonBadRequestException("Password does not match.");
         }
+
+        if (!Pattern.matches(PASSWORD_PATTERN, password)) {
+            throw new CommonBadRequestException("密码必须由6-12位数字和字母组成.");
+        }
+
 
         Optional<VerificationCode> latestFor = verificationCodeRepository.latestFor(phoneNumber, REGISTRATION);
         if (!latestFor.isPresent() || !latestFor.get().getCode().equals(verificationCode) || !latestFor.get().isValid()) {

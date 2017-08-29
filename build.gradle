@@ -1,5 +1,8 @@
 import org.apache.tools.ant.filters.*
 
+import java.time.ZoneId
+import java.time.ZonedDateTime
+
 buildscript {
     repositories {
         jcenter()
@@ -74,7 +77,7 @@ processResources {
     filesMatching('application.yml') {
         expand([
                 buildNumber: System.getenv('BUILD_NUMBER') ?: "Local",
-                "buildTime": (new Date()).toString()
+                "buildTime": (ZonedDateTime.now((ZoneId.of("Asia/Shanghai")))).toString()
         ])
     }
 }

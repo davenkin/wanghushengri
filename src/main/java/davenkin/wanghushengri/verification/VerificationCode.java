@@ -1,9 +1,12 @@
 package davenkin.wanghushengri.verification;
 
+import davenkin.wanghushengri.TimeUtil;
 import davenkin.wanghushengri.sms.PhoneNumber;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+
+import static davenkin.wanghushengri.TimeUtil.now;
 
 /**
  * Created by yteng on 8/27/17.
@@ -11,7 +14,7 @@ import java.time.temporal.ChronoUnit;
 public final class VerificationCode {
     private static final int MAX_VALID_MINS = 30;
     private final String code;
-    private final LocalDateTime createdTime;
+    private final ZonedDateTime createdTime;
     private final PhoneNumber phoneNumber;
     private final VerificationType verificationType;
 
@@ -19,11 +22,11 @@ public final class VerificationCode {
         this.code = code;
         this.phoneNumber = phoneNumber;
         this.verificationType = verificationType;
-        this.createdTime = LocalDateTime.now();
+        this.createdTime = now();
     }
 
     public boolean isValid() {
-        long minutes = ChronoUnit.MINUTES.between(createdTime, LocalDateTime.now());
+        long minutes = ChronoUnit.MINUTES.between(createdTime, now());
         return minutes < MAX_VALID_MINS;
     }
 
@@ -35,7 +38,7 @@ public final class VerificationCode {
         return code;
     }
 
-    public LocalDateTime getCreatedTime() {
+    public ZonedDateTime getCreatedTime() {
         return createdTime;
     }
 
