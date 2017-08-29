@@ -22,17 +22,17 @@ import static java.util.stream.Collectors.toList;
 
 @Component
 public class JwtService {
-    public static final String SECRET_KEY = "secret";
+    public static final String SECRET_KEY = "irgnehsuhgnaw";
     public static final String ISSUER = "wanghushengri";
-    public static final long TIME_TO_LIVE = 30L * 24L * 3600L * 1000L;
     public static final String SCOPES = "scopes";
+    public static final long TIME_TO_LIVE_30_DAYS = 30L * 24L * 3600L * 1000L;
 
     public JwtToken generateJwtToken(User user) {
         Claims claims = Jwts.claims().setSubject(user.getId().getId());
         claims.put(SCOPES, user.getRoles());
 
         Date now = new Date();
-        Date expirationDate = new Date(now.getTime() + TIME_TO_LIVE);
+        Date expirationDate = new Date(now.getTime() + TIME_TO_LIVE_30_DAYS);
 
         String tokenString = Jwts.builder()
                 .setClaims(claims)

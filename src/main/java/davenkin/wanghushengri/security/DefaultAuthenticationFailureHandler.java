@@ -1,6 +1,7 @@
 package davenkin.wanghushengri.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import davenkin.wanghushengri.exception.DeveloperMessageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static davenkin.wanghushengri.exception.DeveloperMessageUtil.developerMessage;
 import static davenkin.wanghushengri.exception.ErrorResponse.of;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -38,7 +40,7 @@ public class DefaultAuthenticationFailureHandler implements AuthenticationFailur
         response.setStatus(UNAUTHORIZED.value());
         response.setContentType(APPLICATION_JSON_VALUE);
         logger.warn("Login failed:", exception);
-        objectMapper.writeValue(response.getWriter(), of(UNAUTHORIZED.value(), exception.getMessage()));
+        objectMapper.writeValue(response.getWriter(), of(UNAUTHORIZED.value(), exception.getMessage(), developerMessage(exception)));
 
     }
 }

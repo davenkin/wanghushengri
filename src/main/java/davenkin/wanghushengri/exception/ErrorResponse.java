@@ -4,23 +4,29 @@ package davenkin.wanghushengri.exception;
  * Created by yteng on 11/27/16.
  */
 public class ErrorResponse {
-    private int httpStatusCode;
+    private int statusCode;
     private String errorMessage;
+    private String developerMessage;
 
-    public ErrorResponse(int httpStatusCode, String errorMessage) {
-        this.httpStatusCode = httpStatusCode;
+    private ErrorResponse(int statusCode, String errorMessage, String developerMessage) {
+        this.statusCode = statusCode;
         this.errorMessage = errorMessage;
+        this.developerMessage = developerMessage;
     }
 
-    public static ErrorResponse of(int httpStatusCode, String errorMessage) {
-        return new ErrorResponse(httpStatusCode, errorMessage);
+    public static ErrorResponse of(int httpStatusCode, String errorMessage, String developerMessage) {
+        return new ErrorResponse(httpStatusCode, errorMessage, developerMessage);
     }
 
-    public int getHttpStatusCode() {
-        return httpStatusCode;
+    public int getStatusCode() {
+        return statusCode;
     }
 
     public String getErrorMessage() {
         return errorMessage;
+    }
+
+    public String getDeveloperMessage() {
+        return developerMessage;
     }
 }

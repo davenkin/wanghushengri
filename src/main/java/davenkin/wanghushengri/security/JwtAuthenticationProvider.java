@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JwtAuthenticationProvider implements AuthenticationProvider {
-    public static final String AUTHENTICATION_FAILED_MESSAGE = "Authentication Failed. Invalid phone number or password.";
 
     private JwtService jwtService;
 
