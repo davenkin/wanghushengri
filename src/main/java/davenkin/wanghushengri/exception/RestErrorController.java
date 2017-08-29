@@ -27,7 +27,7 @@ public class RestErrorController implements ErrorController {
     @RequestMapping(value = PATH)
     ErrorResponse handleError(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> errorAttributes = getErrorAttributes(request, true);
-        return new ErrorResponse(response.getStatus(), (String) errorAttributes.get("message"));
+        return new ErrorResponse(response.getStatus(), (String) errorAttributes.get("error"));
     }
 
     @Override
