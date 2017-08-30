@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
 
 
     private HttpStatus resolveAnnotatedResponseStatus(Exception exception) {
-        logger.error(exception.getMessage(), exception);
+        logger.error(exception.getMessage());
 
         ResponseStatus annotation = findMergedAnnotation(exception.getClass(), ResponseStatus.class);
         if (annotation != null) {

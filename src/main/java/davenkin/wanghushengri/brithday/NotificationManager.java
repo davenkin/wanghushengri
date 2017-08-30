@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NotificationManager {
+    private static Logger logger = LoggerFactory.getLogger(NotificationManager.class);
 
     //    @Scheduled(fixedDelay = 3000)
     @Scheduled(cron = "0 0 10 * * ?", zone = "Asia/Shanghai")
@@ -18,5 +19,4 @@ public class NotificationManager {
         logger.info("=======");
     }
 
-    private static Logger logger = LoggerFactory.getLogger(NotificationManager.class);
 }
