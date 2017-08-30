@@ -16,6 +16,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("local")
 public class AboutApiTest {
     @Autowired
     private TestRestTemplate restTemplate;
