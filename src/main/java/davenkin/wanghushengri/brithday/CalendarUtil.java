@@ -191,8 +191,12 @@ public class CalendarUtil {
     }
 
 
-    public static Date lunarToSolar(int year, int month, int day) throws Exception {
-        return lunarToSolar(year, month, day, false);
+    public static Date lunarToSolar(int year, int month, int day) {
+        try {
+            return lunarToSolar(year, month, day, false);
+        } catch (Exception e) {
+            throw new RuntimeException("Cannot convert from lunar date to solar");
+        }
     }
 
 

@@ -57,7 +57,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
         try {
             return getAuthentication(request);
         } catch (Exception e) {
-            throw new AuthenticationServiceException("Authentication failed:" + e.getMessage(), e.getCause());
+            throw new AuthenticationServiceException(e.getMessage(), e.getCause());
         }
     }
 
