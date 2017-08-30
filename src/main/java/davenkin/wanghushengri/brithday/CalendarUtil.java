@@ -195,7 +195,7 @@ public class CalendarUtil {
         try {
             return lunarToSolar(year, month, day, false);
         } catch (Exception e) {
-            throw new RuntimeException("Cannot convert from lunar date to solar");
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -333,12 +333,13 @@ public class CalendarUtil {
     }
 
 //    public static void main(String[] args) throws Exception {
-//        System.setProperty("user.timezone", "GMT+06");
-//        System.out.println(CalendarUtil.solarToLunar("19860321"));
-//        System.out.println(CalendarUtil.lunarToSolar(Integer.parseInt("20170612".substring(0, 4)), Integer.parseInt("20170612".substring(4, 6)), Integer.parseInt("20170612".substring(6, 8)), false));
+////        System.setProperty("user.timezone", "GMT+06");
+////        System.out.println(CalendarUtil.solarToLunar("19860321"));
+////        System.out.println(CalendarUtil.lunarToSolar(Integer.parseInt("20170612".substring(0, 4)), Integer.parseInt("20170612".substring(4, 6)), Integer.parseInt("20170612".substring(6, 8)), false));
 //        System.out.println(CalendarUtil.lunarToSolar(Integer.parseInt("20170612".substring(0, 4)), Integer.parseInt("20170612".substring(4, 6)), Integer.parseInt("20170612".substring(6, 8)), true));
-//        System.out.println(CalendarUtil.lunarToSolar(2017, 12, 22));
+//        System.out.println(CalendarUtil.lunarToSolar(2017, 12, 29));
 //        System.out.println(new Date());
+////        ZonedDateTime.of(2011,2,30,1,1,1,1, TimeUtil.DEFAULT_ZONE);
 //    }
 
 }

@@ -25,7 +25,7 @@ public class BirthdayApplicationService {
                 command.getCalendarType(),
                 command.getYear(),
                 command.getMonth(),
-                command.getDate(),
+                command.getDay(),
                 command.getLeadTime());
         birthdayRepository.save(birthday);
     }

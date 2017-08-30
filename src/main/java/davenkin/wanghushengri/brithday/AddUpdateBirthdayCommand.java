@@ -22,7 +22,7 @@ public class AddUpdateBirthdayCommand {
     @NotNull
     private CalendarType calendarType;
 
-    @Range(min = 1900, max = 2500, message = "非法年份")
+    @Range(max = 2049, message = "非法年份")
     private int year;
 
     @Range(min = 1, max = 12, message = "非法月份")
@@ -30,7 +30,7 @@ public class AddUpdateBirthdayCommand {
 
 
     @Range(min = 1, max = 31, message = "非法日期")
-    private int date;
+    private int day;
 
     @NotNull
     private LeadTime leadTime;
@@ -39,16 +39,17 @@ public class AddUpdateBirthdayCommand {
     public AddUpdateBirthdayCommand(@JsonProperty("userId") String userId,
                                     @JsonProperty("name") String name,
                                     @JsonProperty("calendarType") CalendarType calendarType,
-                                    @JsonProperty("year") int year,
+                                    @JsonProperty(value = "year") int year,
                                     @JsonProperty("month") int month,
-                                    @JsonProperty("date") int date,
+                                    @JsonProperty("day") int day,
                                     @JsonProperty("leadTime") LeadTime leadTime) {
+
         this.userId = userId;
         this.name = name;
         this.calendarType = calendarType;
         this.year = year;
         this.month = month;
-        this.date = date;
+        this.day = day;
         this.leadTime = leadTime;
     }
 
@@ -72,8 +73,8 @@ public class AddUpdateBirthdayCommand {
         return month;
     }
 
-    public int getDate() {
-        return date;
+    public int getDay() {
+        return day;
     }
 
     public LeadTime getLeadTime() {

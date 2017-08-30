@@ -21,6 +21,7 @@ public class InMemoryCredentialUserRepository implements CredentialUserRepositor
 
     public InMemoryCredentialUserRepository() {
         this.users.put(PhoneNumber.of("15102822755"), new CredentialUser(new User(UserID.of("100000"), PhoneNumber.of("15102822755"), Role.ADMIN), "$2a$10$ihOHsjioUeDHPC/4hAruZuXotwUYl3Q7q9UTkrypWvcEQYc5z1x6i"));
+        this.users.put(PhoneNumber.of("15202895924"), new CredentialUser(new User(UserID.of("100001"), PhoneNumber.of("15202895924"), Role.ADMIN), "$2a$10$ihOHsjioUeDHPC/4hAruZuXotwUYl3Q7q9UTkrypWvcEQYc5z1x6i"));
     }
 
     @Override
