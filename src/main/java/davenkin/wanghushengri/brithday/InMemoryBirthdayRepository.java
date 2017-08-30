@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static davenkin.wanghushengri.brithday.LeadTime.ONE_DAY;
+import static davenkin.wanghushengri.brithday.LeadTime.TWO_DAYS;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -20,8 +22,23 @@ public class InMemoryBirthdayRepository implements BirthdayRepository {
 
 
     public InMemoryBirthdayRepository() {
-        new Birthday(UserID.of("100000"), "槟芳妈", CalendarType.LUNAR, 1964, 7, 15, LeadTime.TWO_DAYS);
-        new Birthday(UserID.of("100001"), "妈妈", CalendarType.LUNAR, 1964, 7, 15, LeadTime.TWO_DAYS);
+        addBirthday(UserID.of("100000"), "爸爸", CalendarType.LUNAR, 1953, 11, 7, ONE_DAY);
+        addBirthday(UserID.of("100000"), "妈妈", CalendarType.LUNAR, 1953, 4, 14, ONE_DAY);
+        addBirthday(UserID.of("100000"), "姐姐", CalendarType.LUNAR, 1979, 12, 20, ONE_DAY);
+        addBirthday(UserID.of("100000"), "槟芳", CalendarType.LUNAR, 1990, 8, 3, ONE_DAY);
+        addBirthday(UserID.of("100000"), "槟芳爸", CalendarType.LUNAR, 1966, 1, 14, ONE_DAY);
+        addBirthday(UserID.of("100000"), "槟芳妈", CalendarType.LUNAR, 1968, 7, 15, ONE_DAY);
+        addBirthday(UserID.of("100000"), "槟芳哥", CalendarType.LUNAR, 1988, 6, 3, ONE_DAY);
+
+        addBirthday(UserID.of("100001"), "爸爸", CalendarType.LUNAR, 1966, 1, 14, TWO_DAYS);
+        addBirthday(UserID.of("100001"), "妈妈", CalendarType.LUNAR, 1968, 7, 15, TWO_DAYS);
+        addBirthday(UserID.of("100001"), "哥", CalendarType.LUNAR, 1988, 6, 3, TWO_DAYS);
+    }
+
+    private void addBirthday(UserID userID, String name, CalendarType calendarType, int year, int month, int day, LeadTime leadTime) {
+        Birthday birthday = new Birthday(userID, name, calendarType, year, month, day, leadTime);
+        BirthdayID id = birthday.getId();
+        birthdays.put(id, birthday);
     }
 
     @Override
