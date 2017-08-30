@@ -41,6 +41,7 @@ public class Application extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        application.profiles("production");
         return application.sources(Application.class);
     }
 
