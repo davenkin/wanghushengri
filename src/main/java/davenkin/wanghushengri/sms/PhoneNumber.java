@@ -41,4 +41,11 @@ public final class PhoneNumber {
     public int hashCode() {
         return phoneNumber != null ? phoneNumber.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "PhoneNumber{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

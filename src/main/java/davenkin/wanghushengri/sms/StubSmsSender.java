@@ -16,7 +16,7 @@ public class StubSmsSender implements SmsSender {
 
     @Override
     public void sendVerificationCode(PhoneNumber phoneNumber, String code) {
-        logger.info("\n\nSent verification code:{}\n\n", code);
+        logger.info("\n\nSent verification code:{} for {}\n\n", code, phoneNumber);
     }
 
     @Override

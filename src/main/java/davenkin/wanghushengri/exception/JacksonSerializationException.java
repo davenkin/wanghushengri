@@ -10,7 +10,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @ResponseStatus(INTERNAL_SERVER_ERROR)
 public class JacksonSerializationException extends RuntimeException {
-    public JacksonSerializationException(String message) {
-        super(message);
+    public JacksonSerializationException(String message, Throwable e) {
+        super(message, e);
     }
 }

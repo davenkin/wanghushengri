@@ -7,7 +7,9 @@ import java.time.ZonedDateTime;
  * Created by yteng on 8/29/17.
  */
 public class TimeUtil {
+    public static ZoneId DEFAULT_ZONE = ZoneId.of("Asia/Shanghai");
+
     public static ZonedDateTime now() {
-        return ZonedDateTime.now(ZoneId.of("Asia/Shanghai"));
+        return ZonedDateTime.now(DEFAULT_ZONE);
     }
 }

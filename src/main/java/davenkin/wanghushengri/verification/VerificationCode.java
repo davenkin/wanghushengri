@@ -3,9 +3,11 @@ package davenkin.wanghushengri.verification;
 import davenkin.wanghushengri.TimeUtil;
 import davenkin.wanghushengri.sms.PhoneNumber;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
+import static davenkin.wanghushengri.TimeUtil.DEFAULT_ZONE;
 import static davenkin.wanghushengri.TimeUtil.now;
 
 /**
@@ -40,6 +42,10 @@ public final class VerificationCode {
 
     public ZonedDateTime getCreatedTime() {
         return createdTime;
+    }
+
+    public boolean isCreatedToday() {
+        return createdTime.toLocalDate().equals(LocalDate.now(DEFAULT_ZONE));
     }
 
     public PhoneNumber getPhoneNumber() {
