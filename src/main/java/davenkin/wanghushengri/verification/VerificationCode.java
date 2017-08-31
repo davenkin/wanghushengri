@@ -1,14 +1,13 @@
 package davenkin.wanghushengri.verification;
 
-import davenkin.wanghushengri.TimeUtil;
 import davenkin.wanghushengri.sms.PhoneNumber;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
-import static davenkin.wanghushengri.TimeUtil.DEFAULT_ZONE;
-import static davenkin.wanghushengri.TimeUtil.now;
+import static davenkin.wanghushengri.util.TimeUtil.DEFAULT_ZONE;
+import static davenkin.wanghushengri.util.TimeUtil.now;
 
 /**
  * Created by yteng on 8/27/17.

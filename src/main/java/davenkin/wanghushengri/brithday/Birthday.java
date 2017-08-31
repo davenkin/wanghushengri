@@ -1,6 +1,6 @@
 package davenkin.wanghushengri.brithday;
 
-import davenkin.wanghushengri.TimeUtil;
+import davenkin.wanghushengri.util.TimeUtil;
 import davenkin.wanghushengri.user.UserID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +11,8 @@ import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.UUID;
 
-import static davenkin.wanghushengri.TimeUtil.DEFAULT_ZONE;
-import static davenkin.wanghushengri.TimeUtil.now;
+import static davenkin.wanghushengri.util.TimeUtil.DEFAULT_ZONE;
+import static davenkin.wanghushengri.util.TimeUtil.now;
 
 /**
  * Created by yteng on 7/28/17.

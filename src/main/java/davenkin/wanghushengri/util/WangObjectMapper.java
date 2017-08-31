@@ -1,4 +1,4 @@
-package davenkin.wanghushengri;
+package davenkin.wanghushengri.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
