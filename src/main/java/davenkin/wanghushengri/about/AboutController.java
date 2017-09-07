@@ -2,9 +2,7 @@ package davenkin.wanghushengri.about;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -32,6 +30,12 @@ public class AboutController {
     @GetMapping(value = "/validate")
     public String validate(@RequestParam("echostr") String echostr) {
         return echostr;
+    }
+
+    @PostMapping(value= "/validate")
+    public String doPost(@RequestBody String request) {
+        System.out.println(request);
+        return request;
     }
 
 
