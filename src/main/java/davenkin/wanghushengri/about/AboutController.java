@@ -35,7 +35,16 @@ public class AboutController {
     @PostMapping(value= "/validate")
     public String doPost(@RequestBody String request) {
         System.out.println(request);
-        return request;
+        String a ="<xml>\n" +
+                "                <ToUserName><![CDATA[o_s1c0qSshYj5Kru95hXtG_5Cmsw]]></ToUserName>\n" +
+                "        <FromUserName><![CDATA[gh_b92c0eab3962]]></FromUserName>\n" +
+                "        <CreateTime>1504764225</CreateTime>\n" +
+                "        <MsgType><![CDATA[text]]></MsgType>\n" +
+                "        <Content><![CDATA[你好]]></Content>\n" +
+                "        <FuncFlag>0</FuncFlag>\n" +
+                "        </xml>";
+
+        return a;
     }
 
 
