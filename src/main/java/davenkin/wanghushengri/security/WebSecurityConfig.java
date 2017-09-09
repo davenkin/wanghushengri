@@ -102,6 +102,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .antMatchers("/about")
                 .antMatchers("/validate")
+                .antMatchers("/redirect")
                 .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**")
                 .antMatchers(OPTIONS, "/**")
                 .antMatchers("/")
